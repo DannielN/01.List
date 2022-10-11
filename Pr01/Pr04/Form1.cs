@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Pr03
+namespace Pr04
 {
     public partial class Form1 : Form
     {
@@ -23,22 +23,20 @@ namespace Pr03
         {
             listBox1.Items.Clear();
             listBox2.Items.Clear();
+            listBox3.Items.Clear();
             list.Clear();
             Random rnd = new Random();
-            int n = Convert.ToInt32(textBox1.Text);
 
-
-            for (int k = 0; k < n; k++)
+            for (int k = 0; k < Convert.ToInt32(textBox1.Text); k++)
             {
-                list.Add(rnd.Next(-3, 7));
+                list.Add(rnd.Next(-5, 24));
             }
 
             Knih.Vypis(listBox1, list);
-            Knih.SmazaniLam(list, 0);
+            Knih.Reverze(list);
             Knih.Vypis(listBox2, list);
 
-            int DruheMax = Knih.MaxDva(list, out int DruheMaxIndex);
-            MessageBox.Show("Druhé maximum " + DruheMax + " leží na indexu " + DruheMaxIndex); 
+            Knih.PoradiMin(list, listBox3);
         }
     }
 }

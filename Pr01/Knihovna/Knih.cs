@@ -1,5 +1,7 @@
 ﻿using System;
+using System.CodeDom;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
@@ -56,6 +58,104 @@ namespace Knihovna
             }
 
             return SecondMax;
+        }
+
+        public static int MaxDva(List<int> Pomocna, out int SecMaxIndex)
+        {
+            int SecMaxCisl = 0;
+            int[] pole = new int[Pomocna.Count];
+            Pomocna.Sort();
+            int max = pole.Max();
+            SecMaxIndex = Pomocna.LastIndexOf(max + 1);
+            SecMaxCisl = Pomocna[SecMaxIndex];
+
+            if (SecMaxIndex < 0)
+            {
+                return (SecMaxIndex * -1);
+            }
+            else
+            {
+                return SecMaxCisl;
+            }
+        }
+
+        public static void Reverze(List<int> list)
+        {
+            list.Reverse();
+        }
+
+        public static void PoradiMin(List<int> list, ListBox ListB)
+        {
+            int minimum = list.Min();
+            int[] indexs = new int[list.Count];
+
+            for (int k = 0; k < list.Count; k++)
+            {
+                if (list[k] == minimum)
+                {
+                    ListB.Items.Add(k);
+                }
+            }
+        }
+
+        public static List<int> ArPosloupnoust(int n, int a1, int d)
+        {
+            List<int> list = new List<int>();
+            // n = 4; a1 = 3; d = 3; // 6 // 9 // 12 // 15
+
+            int help = a1 + d;
+            list.Add(a1+d); // 6
+            for (int k = 1; k < n; k++)
+            {
+                help += d;
+                list.Add(help);
+            }
+            return list;
+        }
+
+        public static List<int> GeoPosloupnost (int n, int a1, int a2)
+        {
+            List<int> list = new List<int>();
+            int vetsi = a1;
+            int mensi = a2;
+
+            if (a1 > a2)
+            {
+                vetsi = a1;
+                mensi = a2;
+            }
+            else
+            {
+                vetsi = a2;
+                mensi = a1;
+            }
+
+            int deleni = vetsi / mensi;
+            int pomocna = (vetsi * deleni); ;
+            for (int k = 0; k < n; k++)
+            {
+                list.Add(pomocna);
+                pomocna = pomocna * deleni;
+            }
+            return list;
+        }
+
+        public static int SoucetPrvku (List<int> list, int p)
+        {
+            int soucet = 0;
+
+            if (p <= list.Count())
+            {
+                for (int k = 0; k < p; k++)
+                {
+                    soucet += list[k];
+                }
+            }
+            else
+            {
+                MessageBox.Show("Číslo p je větší než počet prvků v listu");
+            }
+            return soucet;
         }
     }
 }
