@@ -140,22 +140,61 @@ namespace Knihovna
             return list;
         }
 
-        public static int SoucetPrvku (List<int> list, int p)
+        public static bool SoucetPrvku (List<int> list, int p, out int soucet)
         {
-            int soucet = 0;
-
+            bool truefalse = false;
+            soucet = 0;
             if (p <= list.Count())
             {
+                truefalse = true;
                 for (int k = 0; k < p; k++)
                 {
                     soucet += list[k];
                 }
             }
-            else
+            return truefalse;
+        }
+
+
+        // pr 08
+
+        public static List<int> GeneraceCisel (int n)
+        {
+            List<int> list = new List<int> ();
+            Random rnd = new Random();
+            for (int k = 0; k < n; k++)
             {
-                MessageBox.Show("Číslo p je větší než počet prvků v listu");
+                list.Add(rnd.Next(-100, 101));
             }
-            return soucet;
+            return list;
+        }
+        public static void ProhozeniCisel(List<int> list)
+        {
+            int mimimum = 101;
+            int maximum = -101;
+            int indexmax = 0;
+            int indexmin = 0;
+            for (int k = 0; k < list.Count(); k++)
+            {
+                if (list[k] % 2 != 0 && list[k] % 3 == 0)
+                {
+                    if (mimimum > list[k])
+                    {
+                        mimimum = list[k];
+                        indexmin = k;
+                    }
+                }
+                else if (list[k] % 2 == 0)
+                {
+                    if (list[k] > maximum)
+                    {
+                        maximum = list[k];
+                        indexmax = k;
+                    }
+                }
+            }
+            list[indexmin] = maximum;
+            list[indexmax] = mimimum;
         }
     }
 }

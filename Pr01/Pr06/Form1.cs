@@ -36,8 +36,15 @@ namespace Pr06
         {
             int p = Convert.ToInt32(textBox4.Text);
 
-            int soucet = Knih.SoucetPrvku(list, p);
-            MessageBox.Show("Součet prvních " + p + " prvků v listu je " + soucet);
+            bool truefalse = Knih.SoucetPrvku(list, p, out int soucet);
+            if (truefalse)
+            {
+                MessageBox.Show("Součet prvních " + p + " prvků v listu je " + soucet);
+            }
+            else
+            {
+                MessageBox.Show("Číslo p je vetší než počet prvku v listu");
+            }
         }
     }
 }
