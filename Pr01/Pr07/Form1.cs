@@ -16,5 +16,11 @@ namespace Pr07
         {
             InitializeComponent();
         }
+
+        List<int> list = new List<int>();
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -155,6 +155,14 @@ namespace Knihovna
             return truefalse;
         }
 
+        //pr07
+
+        public static List<int> ZapsaniZnaku(TextBox text)
+        {
+            List<int> list = new List<int>();
+            return list;
+        }
+
 
         // pr 08
 
